@@ -1,16 +1,30 @@
 //current day displayed at top
 var time = moment().format('MMMM Do YYYY');
 $( "#currentDay" ).append(time);
+var currentTime = moment().format('h a'); //need to eventually add minutes
 
 //timeblocks
 //create rows and columns
-var scheduleArray = ["9am","10am","11am","12pm","1pm","2pm","3pm","4pm","5pm"];
+//business hours
+var scheduleArray = ["9 am","10 am","11 am","12 pm","1 pm","2 pm","3 pm","4 pm","5 pm"];
 
-$.each( scheduleArray, function (index, value) {
+for (let i = 0; i < scheduleArray.length; i++) {
     var rowDiv = document.createElement("div");
-    var timeDiv = $("<div></div>").text(value);
-    $(timeDiv).attr("id",index);
+    var timeDiv = $("<div></div>").text(scheduleArray[i]);
+    $(timeDiv).attr("id",[i]);
+    $(timeDiv).attr("class","time");
     $(rowDiv).appendTo("#container");
     $(timeDiv).appendTo(rowDiv);
-});
-//time on left should stay the same
+
+    // var idTimeDiv = document.getElementById([i]);
+    // if (idTimeDiv > currentTime) {
+    //     $("idTimeDiv").css("background-color", "red");
+    // } else {
+    //     $("idTimeDiv").css("background-color", "blue");
+    // }
+};
+
+//color coding
+
+//if before current time, grey
+//if after current time, green
