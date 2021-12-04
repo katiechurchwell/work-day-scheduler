@@ -28,6 +28,7 @@ for (let i = 0; i < scheduleArray.length; i++) {
 
   //description
   $(descriptionDiv).appendTo(rowDiv);
+  $(descriptionDiv).html('<input type="text">')
 
   //color coding
   if (currentTime == timeMomentFormat) {
