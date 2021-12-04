@@ -12,31 +12,32 @@ for (let i = 0; i < scheduleArray.length; i++) {
   var timeMoment = moment().hour(scheduleArray[i]);
   var timeMomentFormat = moment(timeMoment).format("ha");
 
+
   var rowDiv = document.createElement("div");
-  var timeDiv = $("<div></div>").text(timeMomentFormat);
-  var textDiv = document.createElement("div");
+  var timeHour = $("<div></div>").text(timeMomentFormat);
+  var descriptionDiv = document.createElement("div");
+  
 
-
-  //row creation
+  //row
   $(rowDiv).attr("class", "row");
-  $(rowDiv).appendTo("#container");
+  $(rowDiv).appendTo(".time-block");
 
   //time
-  $(timeDiv).attr("id", [i]);
-  $(timeDiv).appendTo(rowDiv);
+  $(timeHour).attr("class", "hour col-1");
+  $(timeHour).appendTo(rowDiv);
 
   //description
-  $(textDiv).attr("class", "description");
-  $(textDiv).appendTo(rowDiv);
+  $(descriptionDiv).appendTo(rowDiv);
 
   //color coding
   if (currentTime == timeMomentFormat) {
-    $(timeDiv).attr("class", "present");
+    $(descriptionDiv).attr("class", "present col-9");
   } else if (currentTime > timeMomentFormat) {
-    $(timeDiv).attr("class", "past");
+    $(descriptionDiv).attr("class", "past col-9");
   } else {
-    $(timeDiv).attr("class", "future");
+    $(descriptionDiv).attr("class", "future col-9");
   }
+
 }
 
 
