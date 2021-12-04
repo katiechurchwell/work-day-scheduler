@@ -3,21 +3,19 @@ var time = moment().format("MMMM Do YYYY");
 $("#currentDay").append(time);
 
 //global variables
-var currentTime = String(moment().format("H"));
-console.log(currentTime);
+var currentTime = moment().format("ha");
 
 //timeblocks
 var scheduleArray = [9, 10, 11, 12, 13, 14, 15, 16, 17];
 
 for (let i = 0; i < scheduleArray.length; i++) {
   var timeMoment = moment().hour(scheduleArray[i]);
-  var timeMomentObject = timeMoment.toObject();
-  var timeMomentObjectHours = timeMomentObject.hours
-console.log(timeMomentObjectHours)
+  var timeMomentFormat = moment(timeMoment).format("ha");
 
   var rowDiv = document.createElement("div");
-  var timeDiv = $("<div></div>").text(timeMomentObjectHours);
+  var timeDiv = $("<div></div>").text(timeMomentFormat);
   var textDiv = document.createElement("div");
+
 
   //row creation
   $(rowDiv).attr("class", "row");
@@ -32,11 +30,13 @@ console.log(timeMomentObjectHours)
   $(textDiv).appendTo(rowDiv);
 
   //color coding
-  if (currentTime === timeMomentObjectHours) {
+  if (currentTime == timeMomentFormat) {
     $(timeDiv).attr("class", "present");
-  } else if (currentTime > scheduleArray[i]) {
+  } else if (currentTime > timeMomentFormat) {
     $(timeDiv).attr("class", "past");
   } else {
     $(timeDiv).attr("class", "future");
   }
 }
+
+
