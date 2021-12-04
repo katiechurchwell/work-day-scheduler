@@ -27,7 +27,9 @@ for (let i = 0; i < scheduleArray.length; i++) {
 
   //description
   $(descriptionDiv).appendTo(rowDiv);
-  $(descriptionDiv).html('<textarea id="' + [i] + '" class="description col-12"></textarea>');
+  $(descriptionDiv).html(
+    '<textarea id="' + [i] + '" class="description col-12"></textarea>'
+  );
 
   //color coding
   if (currentTime == timeMomentFormat) {
@@ -58,9 +60,8 @@ $(saveBtn).click(function (event) {
   localStorage.setItem($(clickedTextArea).attr("id"), data);
 });
 
-for(var i =0; i < localStorage.length; i++){
+for (var i = 0; i < localStorage.length; i++) {
   var textAreas = document.getElementById([i]);
   var lsContent = localStorage.getItem(localStorage.key(i));
   $(textAreas).text(lsContent);
-
 }
