@@ -5,14 +5,12 @@ $("#currentDay").append(time);
 //global variables
 var currentTime = moment().format("ha");
 
-
 //timeblocks
 var scheduleArray = [9, 10, 11, 12, 13, 14, 15, 16, 17];
 
 for (let i = 0; i < scheduleArray.length; i++) {
   var timeMoment = moment().hour(scheduleArray[i]);
   var timeMomentFormat = moment(timeMoment).format("ha");
-
 
   var rowDiv = document.createElement("div");
   var timeHour = $("<div></div>").text(timeMomentFormat);
@@ -29,7 +27,7 @@ for (let i = 0; i < scheduleArray.length; i++) {
 
   //description
   $(descriptionDiv).appendTo(rowDiv);
-  $(descriptionDiv).html('<textarea class="description col-12"></textarea>')
+  $(descriptionDiv).html('<textarea id="' + [i] + '" class="description col-12"></textarea>');
 
   //color coding
   if (currentTime == timeMomentFormat) {
@@ -41,17 +39,21 @@ for (let i = 0; i < scheduleArray.length; i++) {
   }
 
   //save button
-  $(saveBtn).attr("class","saveBtn col-1");
-  $(saveBtn).html('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock-fill" viewBox="0 0 16 16">' + 
-  '<path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>'+'</svg>')
+  $(saveBtn).attr("class", "saveBtn col-1");
+  $(saveBtn).html(
+    '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock-fill" viewBox="0 0 16 16">' +
+      '<path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>' +
+      "</svg>"
+  );
   $(saveBtn).appendTo(rowDiv);
 }
 
 //save function
-var saveBtn = $(".saveBtn")
+var saveBtn = $(".saveBtn");
 
-$(saveBtn).click(function() {
-  var description = $(".description");
-  var comment = $(description).val();
-  localStorage.setItem("saved comment", comment);
+$(saveBtn).click(function (event) {
+  var clickedRow = event.target.parentElement;
+  var clickedTextArea = clickedRow.getElementsByTagName("textarea");
+  var data = $(clickedTextArea).val();
+  localStorage.setItem($(clickedTextArea).attr("id"), data);
 });
