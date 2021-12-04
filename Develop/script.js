@@ -3,43 +3,40 @@ var time = moment().format("MMMM Do YYYY");
 $("#currentDay").append(time);
 
 //global variables
-var currentTime = String(moment().format("h a"));
+var currentTime = String(moment().format("H"));
+console.log(currentTime);
 
 //timeblocks
-var scheduleArray = [
-  "9 am",
-  "10 am",
-  "11 am",
-  "12 pm",
-  "1 pm",
-  "2 pm",
-  "3 pm",
-  "4 pm",
-  "5 pm",
-];
+var scheduleArray = [9, 10, 11, 12, 13, 14, 15, 16, 17];
 
 for (let i = 0; i < scheduleArray.length; i++) {
-  var rowDiv = document.createElement("div");
-  var timeDiv = $("<div></div>").text(scheduleArray[i]);
+  var timeMoment = moment().hour(scheduleArray[i]);
+  var timeMomentObject = timeMoment.toObject();
+  var timeMomentObjectHours = timeMomentObject.hours
+console.log(timeMomentObjectHours)
 
-  $(timeDiv).attr("id", [i]);
+  var rowDiv = document.createElement("div");
+  var timeDiv = $("<div></div>").text(timeMomentObjectHours);
+  var textDiv = document.createElement("div");
+
+  //row creation
+  $(rowDiv).attr("class", "row");
   $(rowDiv).appendTo("#container");
+
+  //time
+  $(timeDiv).attr("id", [i]);
   $(timeDiv).appendTo(rowDiv);
 
-  if (currentTime === scheduleArray[i]) {
+  //description
+  $(textDiv).attr("class", "description");
+  $(textDiv).appendTo(rowDiv);
+
+  //color coding
+  if (currentTime === timeMomentObjectHours) {
     $(timeDiv).attr("class", "present");
-  }
-
-  if (currentTime > scheduleArray[i]) {
+  } else if (currentTime > scheduleArray[i]) {
     $(timeDiv).attr("class", "past");
-  }
-
-  if (currentTime < scheduleArray[i]) {
+  } else {
     $(timeDiv).attr("class", "future");
   }
 }
-
-//color coding
-
-//if before current time, grey
-//if after current time, green
