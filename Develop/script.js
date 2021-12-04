@@ -5,6 +5,7 @@ $("#currentDay").append(time);
 //global variables
 var currentTime = moment().format("ha");
 
+
 //timeblocks
 var scheduleArray = [9, 10, 11, 12, 13, 14, 15, 16, 17];
 
@@ -46,4 +47,9 @@ for (let i = 0; i < scheduleArray.length; i++) {
   $(saveBtn).appendTo(rowDiv);
 }
 
+//save function
+var saveBtn = $(".saveBtn")
 
+$(saveBtn).click(function() {
+alert("click!");
+});
