@@ -1,7 +1,7 @@
 # Work Day Scheduler
 Simple calendar application that allows a user to save events for each hour of the day. This app will run in the browser and feature dynamically updated HTML and CSS powered by jQuery.
 
-[Deployed application here](https://katiechurchwell.github.io/work-day-scheduler/)
+[Deployed application here](https://katiechurchwell.github.io/work-day-scheduler/Develop/index.html)
 <!-- 
 THEN I am presented with time blocks for standard business hours
 WHEN I view the time blocks for that day
