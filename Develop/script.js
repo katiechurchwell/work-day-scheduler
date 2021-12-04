@@ -57,3 +57,10 @@ $(saveBtn).click(function (event) {
   var data = $(clickedTextArea).val();
   localStorage.setItem($(clickedTextArea).attr("id"), data);
 });
+
+for(var i =0; i < localStorage.length; i++){
+  var textAreas = document.getElementById([i]);
+  var lsContent = localStorage.getItem(localStorage.key(i));
+  $(textAreas).text(lsContent);
+
+}
