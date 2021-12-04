@@ -29,7 +29,7 @@ for (let i = 0; i < scheduleArray.length; i++) {
 
   //description
   $(descriptionDiv).appendTo(rowDiv);
-  $(descriptionDiv).html('<textarea class="col-12"></textarea>')
+  $(descriptionDiv).html('<textarea class="description col-12"></textarea>')
 
   //color coding
   if (currentTime == timeMomentFormat) {
@@ -51,5 +51,7 @@ for (let i = 0; i < scheduleArray.length; i++) {
 var saveBtn = $(".saveBtn")
 
 $(saveBtn).click(function() {
-alert("click!");
+  var description = $(".description");
+  var comment = $(description).val();
+  localStorage.setItem("saved comment", comment);
 });
