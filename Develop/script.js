@@ -32,9 +32,9 @@ for (let i = 0; i < scheduleArray.length; i++) {
   );
 
   //color coding
-  if (currentTime == timeMomentFormat) {
+  if (moment().isSame(scheduleArray[i])) {
     $(descriptionDiv).attr("class", "present col-9");
-  } else if (currentTime > timeMomentFormat) {
+  } else if (moment().isAfter(scheduleArray[i])) {
     $(descriptionDiv).attr("class", "past col-9");
   } else {
     $(descriptionDiv).attr("class", "future col-9");
