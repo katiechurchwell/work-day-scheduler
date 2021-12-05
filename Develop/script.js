@@ -62,7 +62,7 @@ $(saveBtn).click(function (event) {
 
 for (const [key, value] of Object.entries(localStorage)) {
   var textAreas = document.getElementById(key);
-  if(key === $(textAreas).attr("id")) {
+  if (key === $(textAreas).attr("id")) {
     $(textAreas).text(value);
   }
 }
