@@ -66,5 +66,3 @@ for (const [key, value] of Object.entries(localStorage)) {
     $(textAreas).text(value);
   }
 }
-
-
