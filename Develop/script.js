@@ -3,7 +3,7 @@ var time = moment().format("MMMM Do YYYY");
 $("#currentDay").append(time);
 
 //global variables
-var currentTime = moment().format("ha");
+var currentTime = moment().format("H");
 
 //timeblocks
 var scheduleArray = [9, 10, 11, 12, 13, 14, 15, 16, 17];
@@ -32,12 +32,12 @@ for (let i = 0; i < scheduleArray.length; i++) {
   );
 
   //color coding
-  if (moment().isSame(scheduleArray[i])) {
-    $(descriptionDiv).attr("class", "present col-9");
-  } else if (moment().isAfter(scheduleArray[i])) {
+  if (currentTime < scheduleArray[i]) {
+    $(descriptionDiv).attr("class", "future col-9");
+  } else if (currentTime > scheduleArray[i]) {
     $(descriptionDiv).attr("class", "past col-9");
   } else {
-    $(descriptionDiv).attr("class", "future col-9");
+    $(descriptionDiv).attr("class", "present col-9");
   }
 
   //save button
@@ -66,3 +66,5 @@ for (const [key, value] of Object.entries(localStorage)) {
     $(textAreas).text(value);
   }
 }
+
+
