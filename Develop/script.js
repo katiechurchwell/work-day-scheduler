@@ -60,8 +60,9 @@ $(saveBtn).click(function (event) {
   localStorage.setItem($(clickedTextArea).attr("id"), data);
 });
 
-for (var i = 0; i < localStorage.length; i++) {
-  var textAreas = document.getElementById([i]);
-  var lsContent = localStorage.getItem(localStorage.key(i));
-  $(textAreas).text(lsContent);
+for (const [key, value] of Object.entries(localStorage)) {
+  var textAreas = document.getElementById(key);
+  if(key === $(textAreas).attr("id")) {
+    $(textAreas).text(value);
+  }
 }
