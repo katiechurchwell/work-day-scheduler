@@ -16,6 +16,7 @@ for (let i = 0; i < scheduleArray.length; i++) {
   var timeHour = $("<div></div>").text(timeMomentFormat);
   var descriptionDiv = document.createElement("div");
   var saveBtn = document.createElement("button");
+  var icon = document.createElement("i");
 
   //row
   $(rowDiv).attr("class", "row");
@@ -41,8 +42,10 @@ for (let i = 0; i < scheduleArray.length; i++) {
   }
 
   //save button
-  $(saveBtn).attr("class", "saveBtn col-1 oi oi-lock-locked");
+  $(saveBtn).addClass("saveBtn");
   $(saveBtn).appendTo(rowDiv);
+  $(icon).attr("class", "fas fa-lock")
+  $(icon).appendTo(saveBtn);
 }
 
 //save function
