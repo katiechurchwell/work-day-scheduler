@@ -43,20 +43,18 @@ for (let i = 0; i < scheduleArray.length; i++) {
 
   //save button
   $(saveBtn).addClass("saveBtn");
+  //event listener
+  $(saveBtn).click(function (event) {
+    var clickedRow = event.target.parentElement;
+    var clickedTextArea = clickedRow.getElementsByTagName("textarea");
+    var data = $(clickedTextArea).val();
+    localStorage.setItem($(clickedTextArea).attr("id"), data);
+  });
+  //icons
   $(saveBtn).appendTo(rowDiv);
-  $(icon).attr("class", "fas fa-lock")
+  $(icon).attr("class", "fas fa-lock");
   $(icon).appendTo(saveBtn);
 }
-
-//save function
-var saveBtn = $(".saveBtn");
-
-$(saveBtn).click(function (event) {
-  var clickedRow = event.target.parentElement;
-  var clickedTextArea = clickedRow.getElementsByTagName("textarea");
-  var data = $(clickedTextArea).val();
-  localStorage.setItem($(clickedTextArea).attr("id"), data);
-});
 
 for (const [key, value] of Object.entries(localStorage)) {
   var textAreas = document.getElementById(key);
